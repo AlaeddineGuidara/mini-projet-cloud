@@ -78,7 +78,11 @@ def delete_task(task_id):
 
 @app.route("/health")
 def health():
-    return jsonify({"status": "ok"})
+    import socket
+    return jsonify({
+        "status": "ok",
+        "container": socket.gethostname()
+    })
 
 if __name__ == "__main__":
     init_db()
